@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171310">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Treino">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<title>Semana — Treino de Tênis</title>
+</head>
+<body>
+<nav class="topbar"><div class="topbar-in" id="nav"></div></nav>
+<div class="wrap">
+  <header class="phead">
+    <p class="eyebrow">Planejamento semanal</p>
+    <h1>Semana</h1>
+    <p class="deck">Mesma estrutura da planilha: sábado a sexta, três turnos. Toque numa célula e escreva. Salva sozinho.</p>
+  </header>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Cabeçalho</h2><span class="saveflag" id="flag">salvo</span></div>
+    <div class="form">
+      <div class="fld"><label for="w-num">Semana</label><input type="number" id="w-num" min="1" max="53"></div>
+      <div class="fld"><label for="w-fase">Fase</label><select id="w-fase">
+        <option>PREPARAÇÃO</option><option>PRÉ COMPETIÇÃO</option><option>COMPETIÇÃO</option><option>ACTIVE REST</option>
+      </select></div>
+      <div class="fld"><label for="w-obj">Objetivo da semana</label><input type="text" id="w-obj" placeholder="VOLUME, TÉCNICA, TORNEIO..."></div>
+    </div>
+    <p class="muted" style="margin-top:12px" id="fase-desc"></p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Grade</h2><span class="sec-note">role para o lado no celular</span></div>
+    <div class="wgrid"><table id="grid"></table></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Objetivos</h2><span class="sec-note">uma linha por foco</span></div>
+    <div class="objs" id="objs"></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Referência</h2></div>
+    <details><summary>Zonas de BPM</summary><div class="det-body">
+      <table class="tbl" id="bpm"></table></div></details>
+    <details><summary>Fases da periodização</summary><div class="det-body plain" id="fases"></div></details>
+    <details><summary>Protocolo de hidratação e alimentação</summary><div class="det-body">
+      <p class="muted"><b>Pré:</b> refeição 3 a 4 h antes; snack 1 a 2 h antes (200–400 kcal). Hidratação: 0,7 L entre 2 e 3 h antes, 0,25 L a 1 h, 0,25 L nos 15 min finais.</p>
+      <p class="muted"><b>Durante:</b> 30 a 60 g de carboidrato por hora, líquido e sólido de absorção rápida. 0,3 a 0,5 L nas trocas de lado.</p>
+      <p class="muted"><b>Após:</b> 2,5 a 4 L de água com sódio e/ou eletrólitos.</p>
+    </div></details>
+    <details><summary>Protocolo de aquecimento</summary><div class="det-body">
+      <p class="muted"><b>No clube:</b> elástico na quadra do paredão · paredão forehand e backhand isolados, começando leve · golpes alternados com foco em técnica · aumentar intensidade · aquecer o braço de saque · saques mais intensos · voleio.</p>
+      <p class="muted"><b>Fora do clube:</b> chegar cedo e dar 4 a 10 voltas na quadra, com círculos de braço · knee to chest · figura 4 · agachamento lateral dos dois lados · abertura lateral de pernas · arm hugs em trote · elástico com torção de tronco para core e footwork · butt kick.</p>
+    </div></details>
+  </section>
+
+  <div class="btnrow">
+    <button class="btn ghost" id="nova">Começar semana seguinte</button>
+    <button class="btn ghost" id="txt">Exportar semana (texto)</button>
+  </div>
+
+  <footer>
+    Estrutura importada da aba Semana. O conteúdo fica salvo neste dispositivo, uma versão por número de semana.
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+nav('semana.html');
+let S = DB.get('semanaAtual', JSON.parse(JSON.stringify(SEMANA_BASE)));
+const hojeIdx = (()=>{ const d=new Date().getDay(); return [2,3,4,5,6,0,1][d]; })();
+
+function salvar(){ DB.set('semanaAtual',S); DB.set('sem'+S.numero,S); flag('flag'); }
+
+function pintarCabecalho(){
+  document.getElementById('w-num').value=S.numero;
+  document.getElementById('w-fase').value=S.fase;
+  document.getElementById('w-obj').value=S.objetivo;
+  document.getElementById('fase-desc').textContent = FASES[S.fase]||'';
+}
+function pintarGrade(){
+  let h='<thead><tr><th class="turno"></th>'+DIAS.map((d,i)=>`<th${i===hojeIdx?' style="color:var(--ball)"':''}>${d}</th>`).join('')+'</tr></thead><tbody>';
+  TURNOS.forEach(t=>{
+    h+=`<tr><td class="tlabel">${t}</td>`;
+    DIAS.forEach((d,i)=>{
+      const v=(S.grid[t]&&S.grid[t][i])||'';
+      h+=`<td${i===hojeIdx?' class="today"':''}><textarea class="cell${v==='N/A'||!v?' na':''}" data-t="${t}" data-i="${i}" rows="2">${esc(v)}</textarea></td>`;
+    });
+    h+='</tr>';
+  });
+  document.getElementById('grid').innerHTML=h+'</tbody>';
+  document.querySelectorAll('.cell').forEach(c=>{
+    c.addEventListener('input',e=>{
+      S.grid[e.target.dataset.t][+e.target.dataset.i]=e.target.value;
+      e.target.classList.toggle('na', !e.target.value || e.target.value==='N/A');
+      salvar();
+    });
+  });
+}
+function pintarObjs(){
+  document.getElementById('objs').innerHTML = Object.keys(S.objetivos).map(k=>`
+    <div><div class="obj-h">${esc(k)}</div>
+    <textarea class="obj-t" data-k="${esc(k)}" rows="5">${esc((S.objetivos[k]||[]).join('\n'))}</textarea></div>`).join('');
+  document.querySelectorAll('.obj-t').forEach(t=>t.addEventListener('input',e=>{
+    S.objetivos[e.target.dataset.k]=e.target.value.split('\n').filter(x=>x.trim());
+    salvar();
+  }));
+}
+
+document.getElementById('w-num').addEventListener('change',e=>{
+  const n=+e.target.value;
+  const guardada=DB.get('sem'+n,null);
+  if(guardada){ S=guardada; } else { S.numero=n; }
+  pintarCabecalho(); pintarGrade(); pintarObjs(); salvar();
+});
+document.getElementById('w-fase').addEventListener('change',e=>{
+  S.fase=e.target.value; document.getElementById('fase-desc').textContent=FASES[S.fase]||''; salvar();
+});
+document.getElementById('w-obj').addEventListener('input',e=>{ S.objetivo=e.target.value; salvar(); });
+
+document.getElementById('nova').addEventListener('click',()=>{
+  if(!confirm('Criar a semana '+(S.numero+1)+' com a grade em branco? Os objetivos são mantidos.')) return;
+  S={numero:S.numero+1, fase:S.fase, objetivo:S.objetivo,
+     grid:{'MANHÃ':Array(7).fill(''),'ALMOÇO':Array(7).fill(''),'NOITE':Array(7).fill('')},
+     objetivos:JSON.parse(JSON.stringify(S.objetivos))};
+  pintarCabecalho(); pintarGrade(); pintarObjs(); salvar();
+});
+
+document.getElementById('txt').addEventListener('click',()=>{
+  let t='SEMANA '+S.numero+' — '+S.fase+' — '+S.objetivo+'\n\n';
+  TURNOS.forEach(tu=>{
+    t+=tu+'\n';
+    DIAS.forEach((d,i)=>{ const v=S.grid[tu][i]; if(v&&v!=='N/A') t+='  '+d+': '+v+'\n'; });
+    t+='\n';
+  });
+  Object.keys(S.objetivos).forEach(k=>{ t+=k+'\n'+S.objetivos[k].map(x=>'  . '+x).join('\n')+'\n\n'; });
+  baixar('semana-'+S.numero+'.txt',t);
+});
+
+document.getElementById('bpm').innerHTML =
+  '<thead><tr><th>Zona</th><th>BPM</th><th>Uso</th></tr></thead><tbody>'+
+  `<tr><td class="op">Máximo</td><td class="num">${BPM.max}</td><td class="num">referência</td></tr>
+   <tr><td class="op">90%</td><td class="num">${BPM.p90}</td><td class="num">intervalado</td></tr>
+   <tr><td class="op">80%</td><td class="num">${BPM.p80}</td><td class="num">aeróbico forte</td></tr>
+   <tr><td class="op">70%</td><td class="num">${BPM.p70}</td><td class="num">base</td></tr>`+'</tbody>';
+
+document.getElementById('fases').innerHTML = Object.entries(FASES).map(([k,v])=>
+  `<p class="muted"><b>${esc(k)}</b> — ${esc(v)}</p>`).join('');
+
+pintarCabecalho(); pintarGrade(); pintarObjs();
+</script>
+</body>
+</html>

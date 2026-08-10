@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171310">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Treino">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<title>Revanche — Treino de Tênis</title>
+</head>
+<body>
+<nav class="topbar"><div class="topbar-in" id="nav"></div></nav>
+<div class="wrap">
+  <header class="phead">
+    <p class="eyebrow">Derrotas 2025 · match-ups em aberto</p>
+    <h1>Revanche</h1>
+    <p class="deck">Quem te derrotou em 2025 e ainda não foi batido. A coluna vira sozinha quando você registra uma vitória sobre o nome em Partidas.</p>
+  </header>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Placar geral</h2><span class="sec-note" id="nota"></span></div>
+    <div class="stats" id="s"></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Em aberto</h2><span class="sec-note">ordenado por nível</span></div>
+    <table class="tbl" id="t-abertas"></table>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Já viradas</h2></div>
+    <table class="tbl" id="t-feitas"></table>
+  </section>
+
+  <footer>
+    Importado da aba "Derrotas 2025". A revanche é detectada cruzando o nome do oponente com as vitórias de 2026.
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+nav('revanche.html');
+const A=todas();
+const norm=s=>String(s).toUpperCase().replace(/\s+/g,' ').trim();
+
+const vitorias={};
+A.filter(m=>m.res==='V').forEach(m=>{
+  const k=norm(m.oponente), d=parseD(m.data);
+  if(!vitorias[k] || (d && d<vitorias[k])) vitorias[k]=d;
+});
+
+const linhas=DERROTAS25.map(r=>{
+  const auto=vitorias[norm(r.oponente)];
+  const data = r.vitoria || (auto? (auto.getMonth()+1)+'/'+auto.getDate()+'/'+String(auto.getFullYear()).slice(2) : '');
+  return {...r, vitoria:data, feita:!!data};
+});
+
+const tot=linhas.length, feitas=linhas.filter(l=>l.feita).length;
+document.getElementById('nota').textContent = feitas+' de '+tot;
+const p=feitas/tot*100;
+document.getElementById('s').innerHTML = `
+  <div class="stat hi"><div class="stat-k">Match-ups virados</div><div class="stat-v">${p.toFixed(0)}%</div>
+    <div class="bar"><i class="w" style="width:${p}%"></i><i class="l" style="width:${100-p}%"></i></div></div>
+  <div class="stat"><div class="stat-k">Viradas</div><div class="stat-v">${feitas}</div><div class="stat-s">de ${tot} oponentes</div></div>
+  <div class="stat warn"><div class="stat-k">Em aberto</div><div class="stat-v">${tot-feitas}</div><div class="stat-s">alvos do ciclo</div></div>`;
+
+const ordem={ALTO:0,'MÉDIO':1,BAIXO:2};
+const abertas=linhas.filter(l=>!l.feita).sort((a,b)=>(ordem[a.nivel]??9)-(ordem[b.nivel]??9));
+document.getElementById('t-abertas').innerHTML =
+  '<thead><tr><th>Oponente</th><th>Nível</th><th>Piso</th><th>Derrota</th></tr></thead><tbody>'+
+  abertas.map(l=>`<tr>
+    <td class="op">${esc(l.oponente)}</td>
+    <td><span class="pill ${l.nivel==='ALTO'?'d':'q'}">${esc(l.nivel)}</span></td>
+    <td class="num">${esc(l.quadra)}</td>
+    <td class="num">${fmtD(l.data)}</td></tr>`).join('')+'</tbody>';
+
+const feitasL=linhas.filter(l=>l.feita).sort((a,b)=>(parseD(b.vitoria)||0)-(parseD(a.vitoria)||0));
+document.getElementById('t-feitas').innerHTML =
+  '<thead><tr><th>Oponente</th><th>Nível</th><th>Derrota</th><th>Revanche</th></tr></thead><tbody>'+
+  feitasL.map(l=>`<tr>
+    <td class="op">${esc(l.oponente)}</td>
+    <td><span class="pill q">${esc(l.nivel)}</span></td>
+    <td class="num">${fmtD(l.data)}</td>
+    <td><span class="pill ball">${fmtD(l.vitoria)}</span></td></tr>`).join('')+'</tbody>';
+</script>
+</body>
+</html>

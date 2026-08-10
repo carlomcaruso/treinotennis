@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171310">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Treino">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<title>Painel — Treino de Tênis</title>
+</head>
+<body>
+<nav class="topbar"><div class="topbar-in" id="nav"></div></nav>
+<div class="wrap">
+  <header class="phead">
+    <p class="eyebrow" id="ey">Temporada 2026</p>
+    <h1>Painel</h1>
+    <p class="deck">Macrociclo de 10 semanas com dois portões: <b>movimentação e atletismo</b>, <b>consistência de saque</b>. Sobreposto: <b>fechar partidas</b>.</p>
+  </header>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Temporada</h2><span class="sec-note" id="nota-temp"></span></div>
+    <div class="stats" id="s-temp"></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Por piso</h2><span class="sec-note">a leitura mais importante</span></div>
+    <div class="stats" id="s-piso"></div>
+    <div class="insight" id="ins-piso"></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Saldo negativo</h2><span class="sec-note">quem está à frente</span></div>
+    <table class="tbl" id="t-saldo"></table>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Últimas partidas</h2><span class="sec-note"><a href="partidas.html" style="color:var(--clay);text-decoration:none">ver todas &rarr;</a></span></div>
+    <table class="tbl" id="t-ult"></table>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Revanche 2025</h2><span class="sec-note" id="nota-rev"></span></div>
+    <div class="stats" id="s-rev"></div>
+    <p class="muted" style="margin-top:14px">Quem te derrotou em 2025 e ainda não foi batido em 2026. <a href="revanche.html" style="color:var(--clay)">Lista completa &rarr;</a></p>
+  </section>
+
+  <footer>
+    Dados importados de "Periodização Carlo - Tênis - 2026.xlsx" em 10/08/2026.<br>
+    Partidas novas registradas aqui ficam neste dispositivo — exporte em Partidas para levar de volta à planilha.
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+nav('index.html');
+const A = todas(), S = stats(A);
+
+document.getElementById('ey').textContent =
+  'Temporada 2026 · Semana ' + (DB.get('semanaAtual', SEMANA_BASE).numero) + ' · ' + (DB.get('semanaAtual', SEMANA_BASE).fase);
+
+document.getElementById('nota-temp').textContent = S.n + ' partidas';
+document.getElementById('s-temp').innerHTML = `
+  <div class="stat hi"><div class="stat-k">Aproveitamento</div><div class="stat-v">${S.pct.toFixed(1)}%</div>
+    <div class="bar"><i class="w" style="width:${S.pct}%"></i><i class="l" style="width:${100-S.pct}%"></i></div></div>
+  <div class="stat"><div class="stat-k">Vitórias</div><div class="stat-v">${S.v}</div><div class="stat-s">de ${S.n} jogos</div></div>
+  <div class="stat"><div class="stat-k">Derrotas</div><div class="stat-v">${S.d}</div><div class="stat-s">no ano</div></div>`;
+
+const du=S.dura, sa=S.saibro;
+const pdu=du.n?du.v/du.n*100:0, psa=sa.n?sa.v/sa.n*100:0;
+document.getElementById('s-piso').innerHTML = `
+  <div class="stat hi"><div class="stat-k">Quadra dura</div><div class="stat-v">${pdu.toFixed(0)}%</div>
+    <div class="stat-s">${du.v}V–${du.n-du.v}D · ${du.n} jogos</div>
+    <div class="bar"><i class="w" style="width:${pdu}%"></i><i class="l" style="width:${100-pdu}%"></i></div></div>
+  <div class="stat warn"><div class="stat-k">Saibro</div><div class="stat-v">${psa.toFixed(0)}%</div>
+    <div class="stat-s">${sa.v}V–${sa.n-sa.v}D · ${sa.n} jogos</div>
+    <div class="bar"><i class="w" style="width:${psa}%"></i><i class="l" style="width:${100-psa}%"></i></div></div>
+  <div class="stat"><div class="stat-k">Diferença</div><div class="stat-v">${(pdu-psa).toFixed(0)}<span style="font-size:20px">pp</span></div>
+    <div class="stat-s">dura acima do saibro</div></div>`;
+
+document.getElementById('ins-piso').innerHTML = `
+  <p class="insight-t">O que estes números dizem</p>
+  <p>Você ganha <strong>${pdu.toFixed(0)}% na dura</strong> e <strong>${psa.toFixed(0)}% no saibro</strong>. Não é um detalhe: é praticamente a diferença entre dois jogadores. E ${sa.n-sa.v} das suas ${S.d} derrotas do ano vieram do saibro.</p>
+  <p>Saibro exige mais deslocamento, ponto mais longo e recuperação melhor — exatamente o <strong>portão 1 do plano</strong>. A movimentação não é um capricho técnico: é o que está custando torneio, porque torneio no Brasil é majoritariamente saibro.</p>`;
+
+const neg = saldoOponentes(A).filter(o=>o.saldo<0).sort((a,b)=>a.saldo-b.saldo);
+document.getElementById('t-saldo').innerHTML =
+  '<thead><tr><th>Oponente</th><th>Saldo</th><th>Retrospecto</th><th>Último</th></tr></thead><tbody>' +
+  neg.map(o=>`<tr>
+    <td class="op">${esc(o.nome)}</td>
+    <td><span class="pill ${o.saldo<=-2?'d':'q'}">${o.saldo}</span></td>
+    <td class="num">${o.v}V–${o.d}D</td>
+    <td class="num">${o.ult? o.ult.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}) : '—'}</td></tr>`).join('') +
+  '</tbody>';
+
+const ult = ordena(A).slice(0,8);
+document.getElementById('t-ult').innerHTML =
+  '<thead><tr><th>Data</th><th>Oponente</th><th></th><th>Piso</th><th>Placar</th></tr></thead><tbody>' +
+  ult.map(m=>`<tr>
+    <td class="num">${fmtD(m.data)}</td>
+    <td class="op">${esc(m.oponente)}${m.conq?`<span class="conq">${esc(m.conq)}</span>`:''}</td>
+    <td><span class="pill ${m.res==='V'?'v':'d'}">${m.res}</span></td>
+    <td class="num">${esc(m.quadra)}</td>
+    <td class="num">${esc(m.placar)}</td></tr>`).join('') + '</tbody>';
+
+const tot=DERROTAS25.length, feitas=DERROTAS25.filter(d=>d.vitoria).length;
+document.getElementById('nota-rev').textContent = feitas + ' de ' + tot;
+document.getElementById('s-rev').innerHTML = `
+  <div class="stat hi"><div class="stat-k">Match-ups virados</div><div class="stat-v">${(feitas/tot*100).toFixed(0)}%</div>
+    <div class="bar"><i class="w" style="width:${feitas/tot*100}%"></i><i class="l" style="width:${100-feitas/tot*100}%"></i></div></div>
+  <div class="stat"><div class="stat-k">Pendentes</div><div class="stat-v">${tot-feitas}</div><div class="stat-s">ainda sem revanche</div></div>`;
+</script>
+</body>
+</html>

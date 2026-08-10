@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171310">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Treino">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<title>Partidas — Treino de Tênis</title>
+</head>
+<body>
+<nav class="topbar"><div class="topbar-in" id="nav"></div></nav>
+<div class="wrap">
+  <header class="phead">
+    <p class="eyebrow">Acompanhamento 2026</p>
+    <h1>Partidas</h1>
+    <p class="deck">Registre logo depois do jogo, enquanto o placar e a sensação estão frescos. As estatísticas recalculam na hora.</p>
+  </header>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Registrar partida</h2><span class="saveflag" id="flag">salvo</span></div>
+    <div class="form">
+      <div class="fld"><label for="f-data">Data</label><input type="date" id="f-data"></div>
+      <div class="fld"><label for="f-op">Oponente</label><input type="text" id="f-op" list="oponentes" placeholder="Nome"><datalist id="oponentes"></datalist></div>
+      <div class="fld"><label for="f-res">Resultado</label><select id="f-res"><option value="V">Vitória</option><option value="D">Derrota</option></select></div>
+      <div class="fld"><label for="f-quadra">Piso</label><select id="f-quadra"><option>SAIBRO</option><option>DURA</option></select></div>
+      <div class="fld"><label for="f-placar">Placar</label><input type="text" id="f-placar" placeholder="6 X 4; 3 X 6; 10 X 8"></div>
+      <div class="fld"><label for="f-qual">Qualidade do meu jogo</label><select id="f-qual"><option>BOM</option><option>MÉDIO</option><option>RUIM</option></select></div>
+      <div class="fld"><label for="f-conq">Conquista (opcional)</label><input type="text" id="f-conq" placeholder="Campeão, vice, etc."></div>
+    </div>
+    <div class="fld" style="margin-top:12px">
+      <label for="f-log">Log de três linhas — o que ganhou pontos, o que perdeu, um ajuste feito no meio do jogo</label>
+      <textarea id="f-log" rows="3" placeholder="1. &#10;2. &#10;3. "></textarea>
+    </div>
+    <div class="btnrow">
+      <button class="btn" id="add">Adicionar partida</button>
+      <button class="btn ghost" id="csv">Exportar novas (CSV)</button>
+    </div>
+    <p class="muted" style="margin-top:12px" id="aviso"></p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Números</h2><span class="sec-note" id="nota"></span></div>
+    <div class="stats" id="s-all"></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Histórico</h2><span class="sec-note" id="filtro-nota"></span></div>
+    <div class="btnrow" style="margin-top:10px">
+      <button class="btn ghost fbtn on" data-f="tudo">Tudo</button>
+      <button class="btn ghost fbtn" data-f="SAIBRO">Saibro</button>
+      <button class="btn ghost fbtn" data-f="DURA">Dura</button>
+      <button class="btn ghost fbtn" data-f="D">Só derrotas</button>
+    </div>
+    <table class="tbl" id="t"></table>
+  </section>
+
+  <footer>
+    O histórico de 92 partidas veio da planilha. Partidas novas ficam salvas neste dispositivo.<br>
+    Use "Exportar novas" para gerar um CSV e colar na aba Acompanhamento.
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+nav('partidas.html');
+let filtro='tudo';
+
+document.getElementById('aviso').textContent = DB.ok()
+  ? 'As partidas que você adicionar ficam salvas neste navegador. Exporte de tempos em tempos para não depender só dele.'
+  : 'Atenção: este navegador está bloqueando o armazenamento local — o que você adicionar não será salvo ao fechar a página.';
+
+const hoje=new Date();
+document.getElementById('f-data').value = hoje.getFullYear()+'-'+String(hoje.getMonth()+1).padStart(2,'0')+'-'+String(hoje.getDate()).padStart(2,'0');
+
+function render(){
+  const A=todas(), S=stats(A);
+  document.getElementById('nota').textContent = S.n+' partidas · '+novas().length+' adicionadas aqui';
+  const pd=S.dura.n?S.dura.v/S.dura.n*100:0, ps=S.saibro.n?S.saibro.v/S.saibro.n*100:0;
+  document.getElementById('s-all').innerHTML = `
+    <div class="stat hi"><div class="stat-k">Geral</div><div class="stat-v">${S.pct.toFixed(1)}%</div><div class="stat-s">${S.v}V–${S.d}D</div></div>
+    <div class="stat"><div class="stat-k">Dura</div><div class="stat-v">${pd.toFixed(0)}%</div><div class="stat-s">${S.dura.v}V–${S.dura.n-S.dura.v}D</div></div>
+    <div class="stat warn"><div class="stat-k">Saibro</div><div class="stat-v">${ps.toFixed(0)}%</div><div class="stat-s">${S.saibro.v}V–${S.saibro.n-S.saibro.v}D</div></div>`;
+
+  const nomes=[...new Set(A.map(m=>m.oponente))].sort();
+  document.getElementById('oponentes').innerHTML = nomes.map(n=>`<option value="${esc(n)}">`).join('');
+
+  let L=ordena(A);
+  if(filtro==='SAIBRO'||filtro==='DURA') L=L.filter(m=>m.quadra===filtro);
+  if(filtro==='D') L=L.filter(m=>m.res==='D');
+  document.getElementById('filtro-nota').textContent = L.length+' registros';
+
+  document.getElementById('t').innerHTML =
+    '<thead><tr><th>Data</th><th>Oponente</th><th></th><th>Piso</th><th>Placar</th><th>Jogo</th></tr></thead><tbody>' +
+    L.map(m=>`<tr>
+      <td class="num">${fmtD(m.data)}</td>
+      <td class="op">${esc(m.oponente)}${m.conq?`<span class="conq">${esc(m.conq)}</span>`:''}${m.log?`<span style="display:block;margin-top:5px;font-size:12.5px;color:var(--ash);white-space:pre-line">${esc(m.log)}</span>`:''}</td>
+      <td><span class="pill ${m.res==='V'?'v':'d'}">${m.res}</span></td>
+      <td class="num">${esc(m.quadra)}</td>
+      <td class="num">${esc(m.placar)}</td>
+      <td><span class="pill q">${esc(m.qual||'')}</span></td></tr>`).join('') + '</tbody>';
+}
+
+document.querySelectorAll('.fbtn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); filtro=b.dataset.f; render();
+}));
+
+document.getElementById('add').addEventListener('click',()=>{
+  const dv=document.getElementById('f-data').value;
+  const op=document.getElementById('f-op').value.trim();
+  if(!dv||!op){ alert('Preencha ao menos data e oponente.'); return; }
+  const [y,mo,dd]=dv.split('-');
+  const m={
+    data:`${+mo}/${+dd}/${y.slice(2)}`,
+    oponente:op.toUpperCase(),
+    res:document.getElementById('f-res').value,
+    quadra:document.getElementById('f-quadra').value,
+    placar:document.getElementById('f-placar').value.trim(),
+    qual:document.getElementById('f-qual').value,
+    conq:document.getElementById('f-conq').value.trim(),
+    log:document.getElementById('f-log').value.trim()
+  };
+  const n=novas(); n.push(m); DB.set('novas',n);
+  ['f-op','f-placar','f-conq','f-log'].forEach(i=>document.getElementById(i).value='');
+  flag('flag'); render();
+});
+
+document.getElementById('csv').addEventListener('click',()=>{
+  const n=novas();
+  if(!n.length){ alert('Nenhuma partida nova para exportar.'); return; }
+  const linhas=[['DATA','OPONENTE','RESULTADO','QUADRA','PLACAR','QUALIDADE','CONQUISTAS','LOG']]
+    .concat(n.map(m=>[m.data,m.oponente,m.res,m.quadra,m.placar,m.qual,m.conq||'',(m.log||'').replace(/\n/g,' / ')]));
+  const csv='\uFEFF'+linhas.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(';')).join('\n');
+  baixar('partidas-novas.csv',csv,'text/csv');
+});
+
+render();
+</script>
+</body>
+</html>
