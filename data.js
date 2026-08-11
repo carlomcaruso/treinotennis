@@ -1,7 +1,8 @@
-// Dados importados de 'Periodização Carlo - Tênis - 2026.xlsx' (Dropbox) em 10/08/2026
+// Gerado automaticamente de 'Periodização Carlo - Tênis - 2026.xlsx' em 2026-08-11
+// Não edite à mão: o GitHub Actions sobrescreve este arquivo.
 const HIST = [
 {
-"data": "1/9/26",
+"data": "2026-01-09",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -10,7 +11,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/10/26",
+"data": "2026-01-10",
 "oponente": "LEONARDO BULGARELLI",
 "res": "V",
 "quadra": "SAIBRO",
@@ -19,7 +20,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/13/26",
+"data": "2026-01-13",
 "oponente": "DANTE LIMA",
 "res": "V",
 "quadra": "SAIBRO",
@@ -28,7 +29,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/15/26",
+"data": "2026-01-15",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -37,7 +38,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/17/26",
+"data": "2026-01-17",
 "oponente": "ANDERSON GASPAR",
 "res": "V",
 "quadra": "DURA",
@@ -46,7 +47,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/20/26",
+"data": "2026-01-20",
 "oponente": "FERNANDO CALIGARIS",
 "res": "D",
 "quadra": "SAIBRO",
@@ -55,7 +56,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/22/26",
+"data": "2026-01-22",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -64,7 +65,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/24/26",
+"data": "2026-01-24",
 "oponente": "MARCOS VIERI",
 "res": "V",
 "quadra": "DURA",
@@ -73,7 +74,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/27/26",
+"data": "2026-01-27",
 "oponente": "MATHEUS MARTINS",
 "res": "V",
 "quadra": "DURA",
@@ -82,7 +83,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/29/26",
+"data": "2025-01-29",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -91,7 +92,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/31/26",
+"data": "2026-01-31",
 "oponente": "ANDERSON LEE",
 "res": "V",
 "quadra": "DURA",
@@ -100,7 +101,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "1/1/26",
+"data": "2026-01-01",
 "oponente": "RAFAEL FERNANDES",
 "res": "V",
 "quadra": "DURA",
@@ -109,7 +110,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "2/2/26",
+"data": "2026-02-02",
 "oponente": "GUSTAVO KIELLING",
 "res": "V",
 "quadra": "DURA",
@@ -118,7 +119,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "2/2/26",
+"data": "2026-02-02",
 "oponente": "LEONARDO BULGARELLI",
 "res": "D",
 "quadra": "SAIBRO",
@@ -127,7 +128,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "2/5/26",
+"data": "2026-02-05",
 "oponente": "FERNANDO CALIGARIS",
 "res": "V",
 "quadra": "SAIBRO",
@@ -136,7 +137,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "2/8/26",
+"data": "2026-02-08",
 "oponente": "FRANCOIS (ECP)",
 "res": "D",
 "quadra": "SAIBRO",
@@ -145,7 +146,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "2/9/26",
+"data": "2026-02-09",
 "oponente": "LUCIANO (VILLAGIO)",
 "res": "D",
 "quadra": "DURA",
@@ -154,7 +155,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "2/19/26",
+"data": "2026-02-19",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -163,7 +164,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "2/28/26",
+"data": "2026-02-28",
 "oponente": "MARCELO BESSA",
 "res": "V",
 "quadra": "DURA",
@@ -172,7 +173,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/2/26",
+"data": "2026-03-02",
 "oponente": "ANDERSON GASPAR",
 "res": "V",
 "quadra": "DURA",
@@ -181,7 +182,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/5/26",
+"data": "2026-03-05",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -190,8 +191,8 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/5/26",
-"oponente": "MÁRCIO (TREINADOR)",
+"data": "2026-03-05",
+"oponente": "MÁRCIO (TREINARDOR)",
 "res": "D",
 "quadra": "DURA",
 "placar": "2 X 6",
@@ -199,8 +200,8 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/14/26",
-"oponente": "MÁRCIO (TREINADOR)",
+"data": "2026-03-14",
+"oponente": "MÁRCIO (TREINARDOR)",
 "res": "D",
 "quadra": "DURA",
 "placar": "4 X 6",
@@ -208,7 +209,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/15/26",
+"data": "2026-03-15",
 "oponente": "KIM YOKOTA",
 "res": "V",
 "quadra": "SAIBRO",
@@ -217,7 +218,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/16/26",
+"data": "2026-03-16",
 "oponente": "ANDERSON GASPAR",
 "res": "V",
 "quadra": "DURA",
@@ -226,7 +227,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/17/26",
+"data": "2026-03-17",
 "oponente": "LUCAS LIMA",
 "res": "D",
 "quadra": "SAIBRO",
@@ -235,7 +236,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/19/26",
+"data": "2026-03-19",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -244,7 +245,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/20/26",
+"data": "2026-03-20",
 "oponente": "RAFAEL FERNANDES",
 "res": "V",
 "quadra": "DURA",
@@ -253,8 +254,8 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/29/26",
-"oponente": "MÁRCIO (TREINADOR)",
+"data": "2026-03-29",
+"oponente": "MÁRCIO (TREINARDOR)",
 "res": "D",
 "quadra": "DURA",
 "placar": "6 X 3; 1 X 6; 4 X 10",
@@ -262,7 +263,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/30/26",
+"data": "2026-03-30",
 "oponente": "ANDERSON GASPAR",
 "res": "V",
 "quadra": "DURA",
@@ -271,7 +272,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "3/30/26",
+"data": "2026-03-30",
 "oponente": "MARCOS BUENO",
 "res": "D",
 "quadra": "SAIBRO",
@@ -280,7 +281,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/1/26",
+"data": "2026-04-01",
 "oponente": "FÁBIO VIANNA",
 "res": "V",
 "quadra": "SAIBRO",
@@ -289,7 +290,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/3/26",
+"data": "2026-04-03",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -298,7 +299,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/6/26",
+"data": "2026-04-06",
 "oponente": "ANDERSON GASPAR",
 "res": "V",
 "quadra": "DURA",
@@ -307,7 +308,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/6/26",
+"data": "2026-04-06",
 "oponente": "GUERRA",
 "res": "D",
 "quadra": "SAIBRO",
@@ -316,7 +317,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/8/26",
+"data": "2026-04-08",
 "oponente": "MARCO (TREINADOR)",
 "res": "V",
 "quadra": "DURA",
@@ -325,7 +326,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/10/26",
+"data": "2026-04-10",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -334,7 +335,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/10/26",
+"data": "2026-04-10",
 "oponente": "ANDERSON GASPAR",
 "res": "V",
 "quadra": "DURA",
@@ -343,7 +344,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/11/26",
+"data": "2026-04-11",
 "oponente": "RODRIGO (ZOZÓ)",
 "res": "V",
 "quadra": "DURA",
@@ -352,7 +353,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/15/26",
+"data": "2026-04-15",
 "oponente": "MARCO (TREINADOR)",
 "res": "V",
 "quadra": "DURA",
@@ -361,7 +362,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/15/26",
+"data": "2026-04-15",
 "oponente": "ALEXANDRE ARROYO",
 "res": "D",
 "quadra": "SAIBRO",
@@ -370,7 +371,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/17/26",
+"data": "2026-04-17",
 "oponente": "EDUARDO SILVEIRA",
 "res": "V",
 "quadra": "DURA",
@@ -379,7 +380,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/19/26",
+"data": "2026-04-19",
 "oponente": "FERNANDO CALIGARIS",
 "res": "V",
 "quadra": "SAIBRO",
@@ -388,7 +389,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/20/26",
+"data": "2026-04-20",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -397,7 +398,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/23/26",
+"data": "2026-04-23",
 "oponente": "YAN MAJEWSKY",
 "res": "V",
 "quadra": "SAIBRO",
@@ -406,7 +407,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/25/26",
+"data": "2026-04-25",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -415,7 +416,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/26/26",
+"data": "2026-04-26",
 "oponente": "EVERTON SANTOS",
 "res": "V",
 "quadra": "DURA",
@@ -424,7 +425,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/27/26",
+"data": "2026-04-27",
 "oponente": "ANDERSON GASPAR",
 "res": "V",
 "quadra": "DURA",
@@ -433,7 +434,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/28/26",
+"data": "2026-04-28",
 "oponente": "PEDRO MELLO",
 "res": "V",
 "quadra": "SAIBRO",
@@ -442,7 +443,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "4/30/26",
+"data": "2026-04-30",
 "oponente": "GUSTAVO (GOODFELLAS)",
 "res": "D",
 "quadra": "SAIBRO",
@@ -451,7 +452,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/4/26",
+"data": "2026-05-04",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -460,7 +461,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/5/26",
+"data": "2026-05-05",
 "oponente": "MARCOS VIERI",
 "res": "V",
 "quadra": "DURA",
@@ -469,7 +470,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/7/26",
+"data": "2026-05-07",
 "oponente": "FERNANDO CALIGARIS",
 "res": "D",
 "quadra": "SAIBRO",
@@ -478,7 +479,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/8/26",
+"data": "2026-05-08",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -487,7 +488,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/9/26",
+"data": "2026-05-09",
 "oponente": "RENATO DANGELO",
 "res": "V",
 "quadra": "DURA",
@@ -496,7 +497,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/12/26",
+"data": "2026-05-12",
 "oponente": "GUERRA",
 "res": "V",
 "quadra": "SAIBRO",
@@ -505,8 +506,8 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/14/26",
-"oponente": "MÁRCIO (TREINADOR)",
+"data": "2026-05-14",
+"oponente": "MÁRCIO (TREINARDOR)",
 "res": "V",
 "quadra": "DURA",
 "placar": "6 X 1",
@@ -514,7 +515,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/14/26",
+"data": "2026-05-14",
 "oponente": "ENRICO (ECP)",
 "res": "V",
 "quadra": "SAIBRO",
@@ -523,7 +524,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/15/26",
+"data": "2026-05-15",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -532,7 +533,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/19/26",
+"data": "2026-05-19",
 "oponente": "DIEGO AVANCINE",
 "res": "D",
 "quadra": "SAIBRO",
@@ -541,7 +542,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "5/29/26",
+"data": "2026-05-29",
 "oponente": "PEDRO MARTINS",
 "res": "V",
 "quadra": "SAIBRO",
@@ -550,7 +551,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/1/26",
+"data": "2026-06-01",
 "oponente": "ANDERSON GASPAR",
 "res": "V",
 "quadra": "DURA",
@@ -559,7 +560,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/1/26",
+"data": "2026-06-01",
 "oponente": "RICARDO ALMENDRA",
 "res": "D",
 "quadra": "DURA",
@@ -568,7 +569,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/3/26",
+"data": "2026-06-03",
 "oponente": "RODRIGO FONSECA",
 "res": "V",
 "quadra": "SAIBRO",
@@ -577,7 +578,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/4/26",
+"data": "2026-06-04",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -586,7 +587,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/6/26",
+"data": "2026-06-06",
 "oponente": "RAFAEL FERNANDES",
 "res": "V",
 "quadra": "DURA",
@@ -595,7 +596,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/8/26",
+"data": "2026-06-08",
 "oponente": "MARCOS VIERI",
 "res": "V",
 "quadra": "DURA",
@@ -604,7 +605,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/11/26",
+"data": "2026-06-11",
 "oponente": "CAIO PANTALEÃO",
 "res": "V",
 "quadra": "SAIBRO",
@@ -613,7 +614,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/13/26",
+"data": "2026-06-13",
 "oponente": "GUERRA",
 "res": "V",
 "quadra": "DURA",
@@ -622,7 +623,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/14/26",
+"data": "2026-06-14",
 "oponente": "GUERRA",
 "res": "D",
 "quadra": "SAIBRO",
@@ -631,7 +632,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/19/26",
+"data": "2026-06-19",
 "oponente": "RODRIGO DE PAULA",
 "res": "V",
 "quadra": "SAIBRO",
@@ -640,7 +641,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/27/26",
+"data": "2026-06-27",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -649,7 +650,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/30/26",
+"data": "2026-06-30",
 "oponente": "THIAGO MAROTZKE",
 "res": "V",
 "quadra": "SAIBRO",
@@ -658,8 +659,8 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/2/26",
-"oponente": "MÁRCIO (TREINADOR)",
+"data": "2026-07-02",
+"oponente": "MÁRCIO (TREINARDOR)",
 "res": "V",
 "quadra": "DURA",
 "placar": "6 X 4",
@@ -667,7 +668,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/3/26",
+"data": "2026-07-03",
 "oponente": "MARCELO C. (VILLAGIO)",
 "res": "D",
 "quadra": "DURA",
@@ -676,7 +677,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/5/26",
+"data": "2026-07-05",
 "oponente": "MARCELO C. (VILLAGIO)",
 "res": "V",
 "quadra": "DURA",
@@ -685,7 +686,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/6/26",
+"data": "2026-07-06",
 "oponente": "CÉSAR (VILLAGIO)",
 "res": "V",
 "quadra": "DURA",
@@ -694,7 +695,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/7/26",
+"data": "2026-07-07",
 "oponente": "LUCAS LIMA",
 "res": "V",
 "quadra": "SAIBRO",
@@ -703,7 +704,7 @@ const HIST = [
 "conq": "CAMPEÃO JABUTI (ATP 500)"
 },
 {
-"data": "7/9/26",
+"data": "2026-07-09",
 "oponente": "OSCAR NETO",
 "res": "V",
 "quadra": "DURA",
@@ -712,7 +713,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/10/26",
+"data": "2026-07-10",
 "oponente": "MARCELO C. (VILLAGIO)",
 "res": "D",
 "quadra": "DURA",
@@ -721,16 +722,16 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/11/26",
+"data": "2026-07-11",
 "oponente": "LEONARDO BULGARELLI",
 "res": "D",
 "quadra": "SAIBRO",
 "placar": "3 X 6; 4 X 6",
 "qual": "MÉDIO",
-"conq": "VICE-CAMPEÃO RT (1º SEM.)"
+"conq": "VICE- CAMPEÃO RT (1º SEM.)"
 },
 {
-"data": "7/14/26",
+"data": "2026-07-14",
 "oponente": "FERNANDO CALIGARIS",
 "res": "D",
 "quadra": "SAIBRO",
@@ -739,8 +740,8 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/16/26",
-"oponente": "MÁRCIO (TREINADOR)",
+"data": "2026-07-16",
+"oponente": "MÁRCIO (TREINARDOR)",
 "res": "V",
 "quadra": "DURA",
 "placar": "6 X 1",
@@ -748,7 +749,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "6/17/26",
+"data": "2026-06-17",
 "oponente": "KADU (BATEDOR)",
 "res": "D",
 "quadra": "DURA",
@@ -757,7 +758,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/20/26",
+"data": "2026-07-20",
 "oponente": "KADU (BATEDOR)",
 "res": "V",
 "quadra": "DURA",
@@ -766,7 +767,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/21/26",
+"data": "2026-07-21",
 "oponente": "FERNANDO CALIGARIS",
 "res": "D",
 "quadra": "SAIBRO",
@@ -775,7 +776,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/22/26",
+"data": "2026-07-22",
 "oponente": "MARCELO C. (VILLAGIO)",
 "res": "D",
 "quadra": "DURA",
@@ -784,7 +785,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/29/26",
+"data": "2026-07-29",
 "oponente": "FERNANDO CALIGARIS",
 "res": "D",
 "quadra": "SAIBRO",
@@ -793,7 +794,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/31/26",
+"data": "2026-07-31",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -802,7 +803,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/4/26",
+"data": "2026-08-04",
 "oponente": "SÉRGIO (JABUTI)",
 "res": "D",
 "quadra": "SAIBRO",
@@ -811,7 +812,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/7/26",
+"data": "2026-08-07",
 "oponente": "PEDRO CAVENDISH",
 "res": "V",
 "quadra": "DURA",
@@ -820,7 +821,7 @@ const HIST = [
 "conq": ""
 },
 {
-"data": "7/9/26",
+"data": "2026-08-09",
 "oponente": "ANDERSON GASPAR",
 "res": "V",
 "quadra": "DURA",
@@ -832,158 +833,158 @@ const HIST = [
 
 const DERROTAS25 = [
 {
-"data": "1/10/25",
+"data": "2025-01-10",
 "oponente": "MARCOS VIERI",
 "quadra": "DURA",
 "nivel": "BAIXO",
-"vitoria": "1/24/26"
+"vitoria": "2026-01-24"
 },
 {
-"data": "1/17/25",
+"data": "2025-01-17",
 "oponente": "RAFAEL MUCHON",
 "quadra": "SAIBRO",
 "nivel": "BAIXO",
 "vitoria": ""
 },
 {
-"data": "10/20/25",
+"data": "2025-10-20",
 "oponente": "LUCIANO (VILLAGIO)",
 "quadra": "DURA",
 "nivel": "ALTO",
 "vitoria": ""
 },
 {
-"data": "1/26/25",
+"data": "2025-01-26",
 "oponente": "GUERRA",
 "quadra": "DURA",
 "nivel": "ALTO",
-"vitoria": "5/12/26"
+"vitoria": "2026-05-12"
 },
 {
-"data": "2/9/25",
+"data": "2025-02-09",
 "oponente": "DIEGO DAVID",
 "quadra": "DURA",
 "nivel": "ALTO",
 "vitoria": ""
 },
 {
-"data": "2/17/25",
+"data": "2025-02-17",
 "oponente": "GUSTAVO KIELLING",
 "quadra": "DURA",
 "nivel": "ALTO",
-"vitoria": "2/2/26"
+"vitoria": "2026-02-02"
 },
 {
-"data": "3/12/25",
+"data": "2025-03-12",
 "oponente": "MURILO COSTA",
 "quadra": "SAIBRO",
 "nivel": "ALTO",
 "vitoria": ""
 },
 {
-"data": "4/1/25",
+"data": "2025-04-01",
 "oponente": "MATHEUS MARTINS",
 "quadra": "DURA",
 "nivel": "ALTO",
-"vitoria": "1/27/26"
+"vitoria": "2026-01-27"
 },
 {
-"data": "4/8/25",
+"data": "2025-04-08",
 "oponente": "EDUARDO FILHO",
 "quadra": "SAIBRO",
 "nivel": "MÉDIO",
 "vitoria": ""
 },
 {
-"data": "5/2/25",
+"data": "2025-05-02",
 "oponente": "FERNANDO CALIGARIS",
 "quadra": "SAIBRO",
 "nivel": "ALTO",
-"vitoria": "2/5/26"
+"vitoria": "2026-02-05"
 },
 {
-"data": "5/18/25",
+"data": "2025-05-18",
 "oponente": "RENATO RUMAN",
 "quadra": "SAIBRO",
 "nivel": "MÉDIO",
 "vitoria": ""
 },
 {
-"data": "5/30/25",
+"data": "2025-05-30",
 "oponente": "MANOEL FERREIRA",
 "quadra": "SAIBRO",
 "nivel": "BAIXO",
 "vitoria": ""
 },
 {
-"data": "6/18/25",
+"data": "2025-06-18",
 "oponente": "RODRIGO BERBER",
 "quadra": "SAIBRO",
 "nivel": "MÉDIO",
 "vitoria": ""
 },
 {
-"data": "8/22/25",
+"data": "2025-08-22",
 "oponente": "MARCELO MOSCOFIAN",
 "quadra": "SAIBRO",
 "nivel": "ALTO",
 "vitoria": ""
 },
 {
-"data": "9/5/25",
+"data": "2025-09-05",
 "oponente": "PEDRO MARTINS",
 "quadra": "SAIBRO",
 "nivel": "MÉDIO",
-"vitoria": "5/29/26"
+"vitoria": "2026-05-29"
 },
 {
-"data": "9/16/25",
+"data": "2025-09-16",
 "oponente": "ANDRE BALEIRA",
 "quadra": "SAIBRO",
 "nivel": "BAIXO",
 "vitoria": ""
 },
 {
-"data": "9/29/25",
+"data": "2025-09-29",
 "oponente": "GABRIEL LUNARDI",
 "quadra": "SAIBRO",
 "nivel": "ALTO",
 "vitoria": ""
 },
 {
-"data": "10/2/25",
+"data": "2025-10-02",
 "oponente": "MÁRCIO (TREINADOR)",
 "quadra": "DURA",
 "nivel": "ALTO",
-"vitoria": "5/14/26"
+"vitoria": "2026-05-14"
 },
 {
-"data": "10/10/25",
+"data": "2025-10-10",
 "oponente": "BRUNO BAGNOLI",
 "quadra": "SAIBRO",
 "nivel": "ALTO",
 "vitoria": ""
 },
 {
-"data": "11/13/25",
+"data": "2025-11-13",
 "oponente": "DANTE LIMA",
 "quadra": "SAIBRO",
 "nivel": "MÉDIO",
-"vitoria": "1/13/26"
+"vitoria": "2026-01-13"
 },
 {
-"data": "11/16/25",
+"data": "2025-11-16",
 "oponente": "LEONARDO BULGARELLI",
 "quadra": "SAIBRO",
 "nivel": "ALTO",
-"vitoria": "1/10/26"
+"vitoria": "2026-01-10"
 },
 {
-"data": "12/6/25",
+"data": "2025-12-06",
 "oponente": "PEDRO CAVENDISH",
 "quadra": "DURA",
 "nivel": "BAIXO",
-"vitoria": "1/9/26"
+"vitoria": "2026-01-09"
 }
 ];
 
@@ -1050,5 +1051,5 @@ const FASES = {
 
 const BPM = {"max": 184, "p90": 166, "p80": 147, "p70": 129};
 
-const DIAS = ['SÁB','DOM','SEG','TER','QUA','QUI','SEX'];
-const TURNOS = ['MANHÃ','ALMOÇO','NOITE'];
+const DIAS = ["SÁB", "DOM", "SEG", "TER", "QUA", "QUI", "SEX"];
+const TURNOS = ["MANHÃ", "ALMOÇO", "NOITE"];
