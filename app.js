@@ -11,7 +11,13 @@ function todas(){ return HIST.concat(novas()); }
 
 /* ---------- datas ---------- */
 function parseD(s){
-  const p = String(s).split('/');
+  const t = String(s||'').trim();
+  if(!t) return null;
+  // ISO: 2026-07-29
+  let m = t.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if(m){ const d=new Date(+m[1], +m[2]-1, +m[3]); return isNaN(d)?null:d; }
+  // legado: M/D/YY
+  const p = t.split('/');
   if (p.length!==3) return null;
   let [mm,dd,yy] = p.map(Number);
   if (yy<100) yy += 2000;
@@ -74,6 +80,41 @@ function flag(id){
   const e=document.getElementById(id); if(!e) return;
   e.classList.add('on'); setTimeout(()=>e.classList.remove('on'),1600);
 }
+/* ---------- atualização automática ---------- */
+function aviso(worker){
+  if(document.getElementById('upd')) return;
+  const d=document.createElement('div');
+  d.id='upd'; d.className='upd';
+  d.innerHTML='<span>Nova versão disponível</span><button class="upd-btn">Atualizar</button>';
+  document.body.appendChild(d);
+  requestAnimationFrame(()=>d.classList.add('on'));
+  d.querySelector('.upd-btn').addEventListener('click',()=>{
+    d.querySelector('.upd-btn').textContent='Atualizando…';
+    worker.postMessage({type:'SKIP_WAITING'});
+  });
+}
+
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  window.addEventListener('load', async () => {
+    try {
+      const reg = await navigator.serviceWorker.register('sw.js');
+      // procura versão nova a cada hora e sempre que o app volta ao primeiro plano
+      setInterval(()=>reg.update().catch(()=>{}), 60*60*1000);
+      document.addEventListener('visibilitychange',()=>{
+        if(!document.hidden) reg.update().catch(()=>{});
+      });
+      reg.addEventListener('updatefound',()=>{
+        const nw = reg.installing;
+        if(!nw) return;
+        nw.addEventListener('statechange',()=>{
+          // só avisa se já havia uma versão instalada antes (não na 1ª visita)
+          if(nw.state==='installed' && navigator.serviceWorker.controller) aviso(nw);
+        });
+      });
+    } catch(e){}
+  });
+  let recarregando=false;
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{
+    if(recarregando) return; recarregando=true; location.reload();
+  });
 }

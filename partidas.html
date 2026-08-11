@@ -118,9 +118,8 @@ document.getElementById('add').addEventListener('click',()=>{
   const dv=document.getElementById('f-data').value;
   const op=document.getElementById('f-op').value.trim();
   if(!dv||!op){ alert('Preencha ao menos data e oponente.'); return; }
-  const [y,mo,dd]=dv.split('-');
   const m={
-    data:`${+mo}/${+dd}/${y.slice(2)}`,
+    data:dv,
     oponente:op.toUpperCase(),
     res:document.getElementById('f-res').value,
     quadra:document.getElementById('f-quadra').value,

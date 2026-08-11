@@ -169,3 +169,24 @@ details[open] summary::after{content:'–'}
   .topbar,.btnrow,.form{display:none}
   .cell{color:#000}
 }
+
+/* aviso de nova versão */
+.upd{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:200;
+  display:flex;align-items:center;gap:12px;
+  background:var(--clay);color:var(--line);
+  padding:13px 14px;border-radius:3px;
+  box-shadow:0 6px 24px rgba(0,0,0,.45);
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.04em;
+  transform:translateY(130%);transition:transform .28s ease;
+  max-width:520px;margin:0 auto;
+}
+.upd.on{transform:translateY(0)}
+.upd-btn{
+  margin-left:auto;appearance:none;cursor:pointer;border:0;border-radius:2px;
+  background:var(--ball);color:var(--court);
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;
+  letter-spacing:.09em;text-transform:uppercase;padding:9px 15px;min-height:38px;
+}
+.upd-btn:focus-visible{outline:2px solid var(--line);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.upd{transition:none;transform:translateY(0)}}
