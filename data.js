@@ -1,4 +1,4 @@
-// Gerado automaticamente de 'Periodização Carlo - Tênis - 2026.xlsx' em 2026-08-18
+// Gerado automaticamente de 'Periodização Carlo - Tênis - 2026.xlsx' em 2026-08-19
 // Não edite à mão: o GitHub Actions sobrescreve este arquivo.
 const HIST = [
 {
@@ -844,6 +844,15 @@ const HIST = [
 "res": "D",
 "quadra": "DURA",
 "placar": "6 X 3; 6 X 2",
+"qual": "MÉDIO",
+"conq": ""
+},
+{
+"data": "2026-08-15",
+"oponente": "PEDRO CAVENDISH",
+"res": "V",
+"quadra": "DURA",
+"placar": "6 X 4",
 "qual": "MÉDIO",
 "conq": ""
 }
