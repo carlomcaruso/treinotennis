@@ -1,5 +1,5 @@
 /* Versão muda a cada publicação — é o que dispara a atualização nos aparelhos */
-const VERSION = '2026-09-07-1433';
+const VERSION = '2026-09-08-1308';
 const CACHE   = 'treino-' + VERSION;
 const ASSETS  = ['./','index.html','semana.html','partidas.html','revanche.html',
   'plano.html','academia.html','app.css','app.js','data.js','manifest.webmanifest','icon.png'];
