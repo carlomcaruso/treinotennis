@@ -1,8 +1,8 @@
 /* Versão muda a cada publicação — é o que dispara a atualização nos aparelhos */
-const VERSION = '2026-09-13-1331';
+const VERSION = '2026-09-13-1819';
 const CACHE   = 'treino-' + VERSION;
-const ASSETS  = ['./','index.html','semana.html','partidas.html','revanche.html',
-  'plano.html','academia.html','app.css','app.js','data.js','manifest.webmanifest','icon.png'];
+const ASSETS  = ['./','index.html','semana.html','partidas.html','revanche.html','saque.html','taticas.html',
+  'plano.html','academia.html','app.css','app.js','config.js','data.js','manifest.webmanifest','icon.png'];
 
 self.addEventListener('install', e => {
   // NÃO chamamos skipWaiting aqui: o SW novo espera o usuário confirmar
@@ -26,7 +26,7 @@ self.addEventListener('message', e => {
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
-  if (url.origin !== location.origin) return;
+  if (url.origin !== location.origin) return;   // Apps Script vai direto à rede
   e.respondWith(
     caches.match(e.request).then(hit => hit || fetch(e.request).then(r => {
       if (r && r.status === 200 && r.type === 'basic') {

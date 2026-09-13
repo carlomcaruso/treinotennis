@@ -5,9 +5,85 @@ const DB = {
   ok(){ try{ localStorage.setItem('tt.probe','1'); localStorage.removeItem('tt.probe'); return true; }catch(e){ return false; } }
 };
 
-/* ---------- partidas: histórico + novas ---------- */
-function novas(){ return DB.get('novas', []); }
+/* ---------- partidas: histórico + novas ----------
+   HIST vem da planilha do Dropbox (sincronizada de madrugada).
+   As novas vêm da planilha do Google, compartilhada entre os aparelhos.
+   Sem internet, usa a última cópia guardada e enfileira o que você registrar. */
+let REMOTAS = [];
+
+function temSync(){ return typeof SYNC_URL === 'string' && SYNC_URL.trim().length > 0; }
+function fila(){ return DB.get('fila', []); }
+function novas(){ return temSync() ? REMOTAS.concat(fila()) : DB.get('novas', []); }
 function todas(){ return HIST.concat(novas()); }
+
+async function carregarRemotas(){
+  if(!temSync()){ REMOTAS = []; return {origem:'local'}; }
+  try{
+    const r = await fetch(SYNC_URL, {method:'GET'});
+    const j = await r.json();
+    if(!j.ok) throw new Error(j.erro||'resposta inválida');
+    REMOTAS = j.partidas || [];
+    DB.set('cache_remotas', REMOTAS);
+    await esvaziarFila();
+    return {origem:'nuvem', n:REMOTAS.length};
+  }catch(e){
+    REMOTAS = DB.get('cache_remotas', []);
+    return {origem:'cache', erro:String(e), n:REMOTAS.length};
+  }
+}
+
+async function enviar(m){
+  const r = await fetch(SYNC_URL, {
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'}, // evita preflight no Apps Script
+    body: JSON.stringify(m)
+  });
+  const j = await r.json();
+  if(!j.ok) throw new Error(j.erro||'falha ao gravar');
+  return j;
+}
+
+async function esvaziarFila(){
+  const f = fila();
+  if(!f.length) return;
+  const restantes = [];
+  for(const m of f){
+    try{ await enviar(m); }catch(e){ restantes.push(m); }
+  }
+  DB.set('fila', restantes);
+  if(restantes.length < f.length){
+    try{
+      const r = await fetch(SYNC_URL); const j = await r.json();
+      if(j.ok){ REMOTAS = j.partidas||[]; DB.set('cache_remotas', REMOTAS); }
+    }catch(e){}
+  }
+}
+
+/** Salva uma partida. Devolve 'nuvem' se gravou, 'fila' se ficou pendente. */
+async function salvarPartida(m){
+  if(!temSync()){
+    const n = DB.get('novas', []); n.push(m); DB.set('novas', n);
+    return 'local';
+  }
+  try{
+    await enviar(m);
+    await carregarRemotas();
+    return 'nuvem';
+  }catch(e){
+    const f = fila(); f.push(m); DB.set('fila', f);
+    REMOTAS = REMOTAS.slice();
+    return 'fila';
+  }
+}
+
+/** Carrega os dados remotos e só então executa a renderização da página. */
+function iniciar(render){
+  render();                                   // pinta já com o que houver
+  carregarRemotas().then(()=>render());       // repinta quando a nuvem responder
+  document.addEventListener('visibilitychange', ()=>{
+    if(!document.hidden) carregarRemotas().then(()=>render());
+  });
+}
 
 /* ---------- datas ---------- */
 function parseD(s){
@@ -59,7 +135,9 @@ function saldoOponentes(arr){
 /* ---------- nav ---------- */
 const PAGES = [
   ['index.html','Painel'], ['semana.html','Semana'], ['partidas.html','Partidas'],
-  ['revanche.html','Revanche'], ['plano.html','Plano'], ['academia.html','Academia']
+  ['revanche.html','Revanche'], ['saque.html','Saque'], ['taticas.html','Táticas'],
+  ['plano.html','Plano'],
+  ['academia.html','Academia']
 ];
 function nav(atual){
   const el=document.getElementById('nav');

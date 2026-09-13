@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171310">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Treino">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<title>Táticas — Contra baloeiro</title>
+<style>
+  .pilar{margin-top:16px;display:grid;grid-template-columns:34px 1fr;gap:0 12px;
+    padding-bottom:16px;border-bottom:1px solid var(--rule)}
+  .pilar:last-child{border-bottom:0}
+  .pilar-n{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;
+    line-height:.85;color:var(--clay)}
+  .pilar-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:21px;line-height:1;margin-bottom:8px}
+  .pilar-d{grid-column:2;color:var(--ash);font-size:14.5px;line-height:1.5;max-width:60ch}
+  .pilar-d+.pilar-d{margin-top:9px}
+  .pilar-d b{color:var(--line);font-weight:600}
+  .pilar-d em{font-style:normal;color:var(--clay);font-weight:600}
+  .porque{color:var(--ball);font-family:'IBM Plex Mono',monospace;font-size:12.5px;
+    margin-top:9px;grid-column:2;line-height:1.5}
+
+  .erro{margin-top:16px;padding:18px;border:1px solid var(--loss);border-radius:3px}
+  .erro-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:22px;color:var(--loss);margin-bottom:10px;line-height:1}
+  .erro p{font-size:14.5px;line-height:1.5;color:var(--ash);max-width:60ch}
+  .erro p+p{margin-top:9px}
+  .erro b{color:var(--line);font-weight:600}
+
+  .zona{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;
+    background:var(--rule);margin-top:16px}
+  .zona div{background:var(--court);padding:14px}
+  .zona-h{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.13em;
+    text-transform:uppercase;font-weight:600;margin-bottom:7px}
+  .zona-x .zona-h{color:var(--loss)} .zona-n .zona-h{color:var(--ash)} .zona-a .zona-h{color:var(--ball)}
+  .zona p{font-size:13.5px;color:var(--ash);line-height:1.45}
+  .zona b{color:var(--line);font-weight:600}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="topbar-in" id="nav"></div></nav>
+<div class="wrap">
+  <header class="phead">
+    <p class="eyebrow">Plano de jogo · estilo do adversário</p>
+    <h1>Contra <span class="thin">baloeiro</span></h1>
+    <p class="deck">Bola alta, sem ritmo, ponto longo. Não é falta de golpe — é <b>plano de jogo e posicionamento</b>. E nos seus números isso está concentrado num lugar só.</p>
+  </header>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">O que os seus jogos mostram</h2></div>
+    <div class="stats" id="s"></div>
+    <div class="insight">
+      <p class="insight-t">Não é margem, é plano</p>
+      <p>No saibro você está em <b id="saldo">—</b>, contra 51V-9D na quadra dura. E o detalhe que importa: <b>6 das suas 16 derrotas no saibro foram atropelos</b> — seis games ou mais de diferença. Não são partidas que escaparam por pouco.</p>
+      <p>Derrota apertada é margem. Atropelo repetido no mesmo piso é <b>incompatibilidade de estilo</b> — você entra sem plano para aquele jogo. Boa notícia: plano se resolve mais rápido que técnica.</p>
+    </div>
+    <p class="muted" style="margin-top:14px">O saibro é o habitat do baloeiro: quique mais alto, bola que fica mais tempo no ar, ponto mais longo. O mesmo adversário que é inofensivo na dura vira um problema aqui. Por isso o seu buraco tem endereço.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Por que funciona contra você</h2></div>
+    <p class="muted">Baloeiro não ganha por qualidade, ganha por <b>negação</b>. Entender o mecanismo é meio caminho:</p>
+    <ul class="muted" style="list-style:none;margin-top:12px">
+      <li style="padding:7px 0 7px 18px;position:relative"><span style="position:absolute;left:0;top:14px;width:6px;height:1px;background:var(--clay);display:block"></span>Tira a bola da sua zona de conforto. Você nunca recebe a bola na altura em que gosta de bater.</li>
+      <li style="padding:7px 0 7px 18px;position:relative"><span style="position:absolute;left:0;top:14px;width:6px;height:1px;background:var(--clay);display:block"></span><b>Bola acima do ombro no backhand é o golpe com menos opções ofensivas do tênis.</b> Quase ninguém consegue atacar dali.</li>
+      <li style="padding:7px 0 7px 18px;position:relative"><span style="position:absolute;left:0;top:14px;width:6px;height:1px;background:var(--clay);display:block"></span>Toda a velocidade tem que vir de você. Logo, <b>todo o erro também vem de você</b>.</li>
+      <li style="padding:7px 0 7px 18px;position:relative"><span style="position:absolute;left:0;top:14px;width:6px;height:1px;background:var(--clay);display:block"></span>E o pior: você sente que "deveria" ganhar. Aí força além da conta, e a conta de erros cresce. <b>Você perde a paciência antes de perder o tênis.</b></li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">O erro capital</h2></div>
+    <div class="erro">
+      <p class="erro-t">Recuar para esperar a bola cair</p>
+      <p>É o instinto de todo mundo: a bola vem alta, você anda para trás para pegá-la numa altura confortável. <b>É exatamente o que o baloeiro quer.</b></p>
+      <p>Resultado: você fica 3 metros atrás da linha de fundo, batendo de baixo para cima, sem ângulo nenhum, com a quadra inteira aberta à sua frente. A bola dele chega fácil, e ele nem precisa se mexer. Você acaba de virar o defensor de um jogo que era seu para atacar.</p>
+      <p>A resposta é contraintuitiva e é a base de tudo abaixo: <b>contra bola alta você vai para frente, não para trás.</b></p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Plano de jogo</h2><span class="sec-note">cinco pilares, em ordem de peso</span></div>
+
+    <div class="pilar">
+      <span class="pilar-n">1</span>
+      <div><p class="pilar-t">Pegue a bola subindo, ou no ar</p></div>
+      <p class="pilar-d">Fique <b>em cima da linha de fundo</b> e dê um passo para dentro quando vê o balão vindo. Duas opções: pegar na subida, antes de passar do ombro, ou tirar do ar com um <b>voleio batido</b> lá pela linha de saque.</p>
+      <p class="pilar-d">O voleio batido contra balão é <em>o</em> golpe deste jogo. Você não precisa de força: a bola vem alta e lenta, e você só precisa direcioná-la para baixo. É habilidade treinável e a maioria dos amadores simplesmente nunca treinou.</p>
+      <p class="porque">Ganha tempo, rouba tempo dele, e transforma o golpe dele de arma em presente.</p>
+    </div>
+
+    <div class="pilar">
+      <span class="pilar-n">2</span>
+      <div><p class="pilar-t">Mude a altura, não a velocidade</p></div>
+      <p class="pilar-d">Não tente bater mais forte — bata <b>mais baixo</b>. Backhand slice bem cortado, que desliza rasteiro e morre baixo, é o antídoto clássico: <b>ele não consegue dar balão numa bola que não sobe.</b> Para levantar a bola ele precisa pegá-la debaixo, e você está negando isso.</p>
+      <p class="pilar-d">No saibro o slice fica ainda mais rasteiro que na dura. É o piso onde este golpe rende mais — e é justamente onde você está perdendo.</p>
+      <p class="porque">Velocidade alimenta o baloeiro (ele devolve com a sua energia). Altura baixa o desarma.</p>
+    </div>
+
+    <div class="pilar">
+      <span class="pilar-n">3</span>
+      <div><p class="pilar-t">Ataque o curto, neutralize o fundo</p></div>
+      <p class="pilar-d">Regra dura, sem exceção: <b>só ataca a bola que cai antes da linha de saque.</b> Balão profundo não se ataca — se devolve com profundidade e altura própria, e recomeça o ponto.</p>
+      <p class="pilar-d">É aqui que a maioria das suas derrotas de atropelo se explica. Tentar ganhar o ponto a partir de uma bola alta e funda, de trás da quadra, é a jogada de menor porcentagem do tênis. Cinco tentativas dessas por set e o set acabou.</p>
+      <p class="porque">Corta a maior fonte de erro gratuito do jogo contra baloeiro.</p>
+    </div>
+
+    <div class="pilar">
+      <span class="pilar-n">4</span>
+      <div><p class="pilar-t">Deixa curta — e antes disso, empurra</p></div>
+      <p class="pilar-d">Baloeiro fica plantado três metros atrás da linha e se move mal para frente. A <b>deixadinha é brutal</b> contra ele, e no saibro mais ainda.</p>
+      <p class="pilar-d">A combinação que funciona: um balão seu bem profundo para empurrá-lo mais para trás, e na bola seguinte a deixada. Espelhar o jogo dele por uma bola não é falta de ambição — é montar a armadilha.</p>
+      <p class="porque">Usa a posição dele contra ele, e custa quase nada de risco.</p>
+    </div>
+
+    <div class="pilar">
+      <span class="pilar-n">5</span>
+      <div><p class="pilar-t">Suba atrás de profundidade, não de força</p></div>
+      <p class="pilar-d">Baloeiro em geral passa mal e odeia ter que bater para baixo. Subir à rede é bom plano — mas <b>suba atrás de uma bola funda, não de uma bola forte.</b> Bola forte e curta volta como balão por cima da sua cabeça.</p>
+      <p class="pilar-d">E na rede, feche bem: contra bola alta e lenta, o erro é ficar longe da rede e virar alvo de balão.</p>
+      <p class="porque">Encurta o ponto e cobra dele o golpe que ele menos treina.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Mapa de decisão</h2><span class="sec-note">onde a bola cai decide o que fazer</span></div>
+    <div class="zona">
+      <div class="zona-x">
+        <p class="zona-h">Balão fundo, acima do ombro</p>
+        <p><b>Não atacar.</b> Devolva com profundidade e altura, no meio ou no backhand dele. Recupere a posição e espere a próxima. Este é o ponto que você ganha por paciência.</p>
+      </div>
+      <div class="zona-n">
+        <p class="zona-h">Balão na altura do peito</p>
+        <p><b>Passo para dentro.</b> Pegue na subida com topspin, cruzado e profundo. Sem tentar acabar — só tirar o tempo dele e forçar a bola curta.</p>
+      </div>
+      <div class="zona-a">
+        <p class="zona-h">Cai antes da linha de saque</p>
+        <p><b>Agora sim.</b> Voleio batido no ar ou golpe de ataque, e sobe atrás. Ou deixadinha, se ele estiver plantado no fundo. Este é o seu ponto.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Orçamento de paciência</h2></div>
+    <div class="insight">
+      <p class="insight-t">Conte as bolas</p>
+      <p>Contra baloeiro perde quem se impacienta primeiro. Entre em quadra com uma regra numérica: <b>no mínimo 4 bolas neutras antes de tentar qualquer coisa.</b> Conte em voz alta se precisar.</p>
+      <p>Parece bobo e é o que mais muda o placar. Seis atropelos no saibro é a assinatura de paciência que acabou no game 3.</p>
+      <p>E cuidado com o padrão do 6-1: <b>ganhar o primeiro set fácil e perder os dois seguintes</b> é clássico contra este estilo. Ele não mudou nada — a sua disposição de construir o ponto é que caiu. Quando o primeiro set vem fácil, a regra das 4 bolas vale <b>mais</b>, não menos.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Como treinar isso</h2><span class="sec-note">peça ao Marco ou ao Márcio</span></div>
+    <table class="tbl">
+      <thead><tr><th>Exercício</th><th>Como</th><th>Critério</th></tr></thead>
+      <tbody>
+        <tr><td class="op">Voleio batido da linha de saque</td>
+          <td>Ele lança bolas altas, você tira do ar da linha de saque. 3×10 de cada lado.</td>
+          <td class="num">7/10 dentro</td></tr>
+        <tr><td class="op">Bola alta na subida</td>
+          <td>Balões profundos; você é obrigado a bater antes de passar do ombro, sem recuar.</td>
+          <td class="num">8/10 além da linha de saque</td></tr>
+        <tr><td class="op">Slice rasteiro com alvo</td>
+          <td>Backhand slice que tem que quicar antes de uma linha a 2 m do fundo e morrer baixo.</td>
+          <td class="num">7/10 rasteiros</td></tr>
+        <tr><td class="op">Deixadinha após balão</td>
+          <td>Um balão seu profundo, a bola seguinte é deixada obrigatória.</td>
+          <td class="num">6/10 dentro</td></tr>
+        <tr><td class="op">Jogo sem recuar</td>
+          <td>Pontos com balões dos dois lados. <b>Bater atrás da linha de fundo = perde o ponto.</b></td>
+          <td class="num">vencer ≥50%</td></tr>
+        <tr><td class="op">Pontos com orçamento</td>
+          <td>Games onde atacar antes da 4ª bola custa o ponto, mesmo se você acertar.</td>
+          <td class="num">aderência ≥90%</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top:14px">Encaixe no slot de <b>6ª feira</b> (treino amistoso com restrição) e num pedaço da 2ª. Não precisa de sessão nova — é troca de conteúdo, não carga extra.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">A ligação com o resto do plano</h2></div>
+    <p class="muted">Ponto contra baloeiro é longo, e ponto longo cobra pernas. Não é coincidência que o seu portão 1 do macrociclo seja <b>movimentação e atletismo</b>: é o mesmo remédio. Cada bloco de deslocamento lateral e de recuperação à bisetriz que você fizer na 2ª feira aparece aqui, na 20ª bola do ponto.</p>
+    <p class="muted">E a <b>Opção B da academia</b> — potência lateral, desaceleração, panturrilha — é literalmente o treino físico deste tipo de jogo.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Antes de entrar em quadra</h2><span class="sec-note">checklist de 30 segundos</span></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td class="op">1</td><td>Vou ficar <b>em cima da linha</b>. Bola alta é passo para dentro, nunca para trás.</td></tr>
+        <tr><td class="op">2</td><td><b>4 bolas</b> antes de qualquer tentativa.</td></tr>
+        <tr><td class="op">3</td><td>Só ataco o que cai <b>antes da linha de saque</b>.</td></tr>
+        <tr><td class="op">4</td><td>Backhand <b>slice rasteiro</b> como bola padrão de neutralização.</td></tr>
+        <tr><td class="op">5</td><td>Uma <b>deixadinha por game</b>, no mínimo, para ele não se plantar no fundo.</td></tr>
+        <tr><td class="op">6</td><td>Se eu ganhar o 1º set fácil, <b>reforço</b> a regra das 4 bolas em vez de relaxar.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    Anote no log de três linhas, em Partidas, quantas vezes você atacou bola funda — é a métrica que diz se o plano foi seguido.<br>
+    Plano de jogo se avalia por aderência, não por resultado. Set perdido com 90% de aderência é informação boa.
+  </footer>
+</div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+nav('taticas.html');
+iniciar(function render(){
+  const A = todas();
+  const sa = A.filter(m=>m.quadra==='SAIBRO'), du = A.filter(m=>m.quadra==='DURA');
+  const sv = sa.filter(m=>m.res==='V').length, dv = du.filter(m=>m.res==='V').length;
+  const ps = sa.length? sv/sa.length*100 : 0, pd = du.length? dv/du.length*100 : 0;
+
+  const el = document.getElementById('saldo');
+  if(el) el.textContent = sv+'V-'+(sa.length-sv)+'D';
+
+  document.getElementById('s').innerHTML = `
+    <div class="stat warn"><div class="stat-k">Saibro</div><div class="stat-v">${ps.toFixed(0)}%</div>
+      <div class="stat-s">${sv}V–${sa.length-sv}D</div>
+      <div class="bar"><i class="w" style="width:${ps}%"></i><i class="l" style="width:${100-ps}%"></i></div></div>
+    <div class="stat hi"><div class="stat-k">Quadra dura</div><div class="stat-v">${pd.toFixed(0)}%</div>
+      <div class="stat-s">${dv}V–${du.length-dv}D</div>
+      <div class="bar"><i class="w" style="width:${pd}%"></i><i class="l" style="width:${100-pd}%"></i></div></div>
+    <div class="stat"><div class="stat-k">Diferença</div><div class="stat-v">${(pd-ps).toFixed(0)}<span style="font-size:19px">pp</span></div>
+      <div class="stat-s">dura acima do saibro</div></div>`;
+});
+</script>
+</body>
+</html>

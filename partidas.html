@@ -69,14 +69,26 @@
 </div>
 
 <script src="data.js"></script>
+<script src="config.js"></script>
 <script src="app.js"></script>
 <script>
 nav('partidas.html');
 let filtro='tudo';
 
-document.getElementById('aviso').textContent = DB.ok()
-  ? 'As partidas que você adicionar ficam salvas neste navegador. Exporte de tempos em tempos para não depender só dele.'
-  : 'Atenção: este navegador está bloqueando o armazenamento local — o que você adicionar não será salvo ao fechar a página.';
+function pintarAviso(info){
+  const el=document.getElementById('aviso');
+  if(!temSync()){
+    el.textContent='Sincronização não configurada: o que você registrar fica só neste aparelho. Use "Exportar novas" para levar à planilha.';
+    return;
+  }
+  const pend=fila().length;
+  if(info && info.origem==='cache'){
+    el.textContent='Sem conexão com a planilha — mostrando a última cópia salva.'+(pend?` ${pend} partida(s) aguardando envio.`:'');
+  } else {
+    el.textContent='Sincronizado com a planilha do Google: o que você registrar aqui aparece nos outros aparelhos.'+(pend?` ${pend} pendente(s).`:'');
+  }
+}
+pintarAviso();
 
 const hoje=new Date();
 document.getElementById('f-data').value = hoje.getFullYear()+'-'+String(hoje.getMonth()+1).padStart(2,'0')+'-'+String(hoje.getDate()).padStart(2,'0');
@@ -128,9 +140,19 @@ document.getElementById('add').addEventListener('click',()=>{
     conq:document.getElementById('f-conq').value.trim(),
     log:document.getElementById('f-log').value.trim()
   };
-  const n=novas(); n.push(m); DB.set('novas',n);
-  ['f-op','f-placar','f-conq','f-log'].forEach(i=>document.getElementById(i).value='');
-  flag('flag'); render();
+  const bt=document.getElementById('add');
+  bt.disabled=true; bt.textContent='Salvando…';
+  salvarPartida(m).then(destino=>{
+    ['f-op','f-placar','f-conq','f-log'].forEach(i=>document.getElementById(i).value='');
+    flag('flag');
+    render();
+    pintarAviso();
+    if(destino==='fila'){
+      alert('Sem conexão agora. A partida foi guardada e será enviada assim que você abrir o site online.');
+    }
+  }).finally(()=>{
+    bt.disabled=false; bt.textContent='Adicionar partida';
+  });
 });
 
 document.getElementById('csv').addEventListener('click',()=>{
@@ -142,7 +164,7 @@ document.getElementById('csv').addEventListener('click',()=>{
   baixar('partidas-novas.csv',csv,'text/csv');
 });
 
-render();
+iniciar(function(){ render(); pintarAviso(); });
 </script>
 </body>
 </html>

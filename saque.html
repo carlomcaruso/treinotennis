@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171310">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Treino">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<title>Saque — Protocolo de resgate</title>
+<style>
+  .diag{display:grid;gap:1px;background:var(--rule);margin-top:16px}
+  .diag-item{background:var(--court);padding:16px 14px}
+  .diag-n{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--clay);font-weight:600;margin-bottom:7px}
+  .diag-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:20px;line-height:1;margin-bottom:8px}
+  .diag-d{color:var(--ash);font-size:14px;line-height:1.45;max-width:58ch}
+  .diag-d b{color:var(--line);font-weight:600}
+  .diag-v{margin-top:9px;font-size:14px;color:var(--ball);font-family:'IBM Plex Mono',monospace}
+
+  .tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px}
+  .tal{background:var(--court-2);border:1px solid var(--rule-strong);border-radius:3px;padding:14px}
+  .tal-h{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--ash);font-weight:600;margin-bottom:10px}
+  .tal-n{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:40px;line-height:.9;
+    font-variant-numeric:tabular-nums;margin-bottom:10px}
+  .tal-b{display:flex;gap:8px}
+  .tal-b button{flex:1;appearance:none;cursor:pointer;border:1px solid var(--rule-strong);
+    background:transparent;color:var(--line);border-radius:2px;min-height:44px;
+    font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600}
+  .tal-b button.mais{background:var(--ball);color:var(--court);border-color:var(--ball)}
+  .tal-b button:focus-visible{outline:2px solid var(--ball);outline-offset:2px}
+  .resultado{margin-top:14px;padding:14px 16px;border:1px solid var(--rule-strong);border-radius:2px}
+  .resultado .big{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:32px;line-height:1}
+  .resultado .msg{color:var(--ash);font-size:14px;margin-top:6px;line-height:1.45}
+
+  .blk{margin-top:14px;border-left:3px solid var(--clay);padding-left:14px}
+  .blk-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .blk-n{font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;
+    font-size:17px;letter-spacing:.04em}
+  .blk-m{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ball)}
+  .blk-d{color:var(--ash);font-size:14px;line-height:1.5;margin-top:5px;max-width:60ch}
+  .blk-d b{color:var(--line);font-weight:600}
+  .blk-d em{font-style:normal;color:var(--clay);font-weight:600}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="topbar-in" id="nav"></div></nav>
+<div class="wrap">
+  <header class="phead">
+    <p class="eyebrow">Protocolo de resgate · semana 6 do macrociclo</p>
+    <h1>Saque</h1>
+    <p class="deck">Duas sessões curtas por semana para tirar o saque do buraco. <b>Volume baixo, qualidade alta</b> — mais bola não conserta saque quebrado, grava o erro.</p>
+  </header>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Leia isto primeiro</h2></div>
+    <div class="insight">
+      <p class="insight-t">Provavelmente não é uma crise</p>
+      <p>Você está na semana 6. O plano previa exatamente agora a entrada do gesto novo nos jogos valendo, e avisava: <b>a técnica nova piora antes de melhorar</b>. Uma onda de duplas nesta janela é o preço da troca, não sinal de que o saque desandou.</p>
+      <p>Isso muda a conduta. Não se conserta um padrão em transição empilhando volume — se conserta <b>reduzindo variáveis</b> e dando tempo. As duas sessões abaixo fazem isso.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Diagnóstico</h2><span class="sec-note">faça na próxima 5ª</span></div>
+    <p class="muted">Dupla falta tem três causas, e o tratamento de cada uma é diferente. Antes de treinar, descubra qual é a sua — são 6 minutos.</p>
+    <div class="diag">
+      <div class="diag-item">
+        <p class="diag-n">Causa 1 — a mais fácil de arrumar</p>
+        <p class="diag-t">Lançamento instável</p>
+        <p class="diag-d">Se a bola muda de lugar, todo o resto compensa e nada se repete. <b>Teste:</b> 20 lançamentos, pegando a bola sem bater, tentando acertar uma zona de 50 cm (uma raquete deitada no chão serve de alvo).</p>
+        <p class="diag-v">Menos de 17/20 → o problema é aqui. A sessão inteira vira lançamento.</p>
+      </div>
+      <div class="diag-item">
+        <p class="diag-n">Causa 2 — a mais comum no seu nível</p>
+        <p class="diag-t">Desaceleração (medo)</p>
+        <p class="diag-d">Você freia o braço no 2º saque para não errar — e é justamente a freada que faz errar. <b>Sinal:</b> a bola morre curta dentro da área, bate na fita, ou sai longa por empurrão. <b>Teste:</b> 10 segundos saques, um a 70% e outro a 90% de velocidade de braço. Se o de 90% entra mais, é isto.</p>
+        <p class="diag-v">O 2º saque precisa de MAIS aceleração de braço, não menos. O que muda é o eixo, não a força.</p>
+      </div>
+      <div class="diag-item">
+        <p class="diag-n">Causa 3 — situacional</p>
+        <p class="diag-t">Ritmo e pressão</p>
+        <p class="diag-d">O gesto está bom no treino e desmonta no jogo. <b>Sinal:</b> as duplas se concentram em 30-30, 30-40 e break points, e você saca mais rápido quando aperta. <b>Teste:</b> anote o placar de cada dupla falta por dois jogos.</p>
+        <p class="diag-v">Se agrupam em pontos de pressão, o problema é rotina, não técnica.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">O erro técnico de sempre</h2></div>
+    <div class="insight">
+      <p class="insight-t">2º saque não é 1º saque mais devagar</p>
+      <p>É o motivo número um de dupla falta em jogador competitivo. Se o seu 2º saque é o mesmo gesto com menos velocidade, ele é <b>plano, baixo sobre a rede e sem margem</b> — a chance de errar continua a mesma, só com bola mais fraca.</p>
+      <p>2º saque é <b>outro saque</b>: mesma aceleração de braço, raquete escovando a bola de baixo para cima e da esquerda para a direita, passando <b>1 a 1,5 m acima da fita</b>. A folga vertical é o que traz a bola para dentro, não a lentidão.</p>
+      <p>E o alvo muda: 2º saque vai no <b>corpo ou no backhand</b>, não no canto. Menos precisão exigida, menos erro.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Bloco A — Reconstrução</h2><span class="sec-note">25 min · 2ª ou 6ª</span></div>
+    <p class="muted">Duas sessões curtas rendem mais que uma longa: o padrão motor consolida no intervalo, não na repetição. Este bloco não tem jogo, não tem placar, não tem pressão.</p>
+
+    <div class="blk"><div class="blk-h"><span class="blk-n">Manguito e mobilidade</span><span class="blk-m">4 min</span></div>
+      <p class="blk-d">Rotação externa com banda 2×15 e mobilidade torácica. <em>Nunca pule</em> — você vai somar volume de saque numa semana que já tem carga alta.</p></div>
+
+    <div class="blk"><div class="blk-h"><span class="blk-n">Lançamento isolado</span><span class="blk-m">5 min</span></div>
+      <p class="blk-d">20 lançamentos sem bater, braço estendido, soltando na altura dos olhos, sem giro de pulso. Alvo de 50 cm no chão. <b>Se não fizer 17/20, pare aqui e passe a sessão só nisto.</b> Não existe saque estável sobre lançamento instável.</p></div>
+
+    <div class="blk"><div class="blk-h"><span class="blk-n">Saque de meia quadra, só braço</span><span class="blk-m">5 min</span></div>
+      <p class="blk-d">Da linha de serviço, de joelhos ou em pé sem usar as pernas, 15 bolas com grip continental. Objetivo único: <b>sentir a raquete escovar a bola</b>. Tirando pernas e tronco da equação, sobra só o gesto que produz giro — e é ele que está te faltando no 2º saque.</p></div>
+
+    <div class="blk"><div class="blk-h"><span class="blk-n">Escada de giro</span><span class="blk-m">8 min</span></div>
+      <p class="blk-d">Linha de serviço → 3/4 de quadra → fundo. <b>7/10 dentro para avançar de estação</b>; errou, volta uma. Mire alto sobre a rede, não forte. A bola deve cair perto da linha de saque e pular alto.</p></div>
+
+    <div class="blk"><div class="blk-h"><span class="blk-n">Fechamento</span><span class="blk-m">3 min</span></div>
+      <p class="blk-d">10 saques do fundo, contando em voz alta "baixa-sobe-bate". <b>Termine acertando três seguidos</b>, custe o que custar — mesmo que leve 15 bolas. Encerrar sessão no erro é o que leva a insegurança para o jogo.</p></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Bloco B — Pressão</h2><span class="sec-note">25 min · 5ª, depois do bloco normal</span></div>
+    <p class="muted">Aqui o saque volta a ter consequência. Só entre neste bloco depois de bater os critérios do Bloco A duas sessões seguidas.</p>
+
+    <div class="blk"><div class="blk-h"><span class="blk-n">Manguito</span><span class="blk-m">2 min</span></div>
+      <p class="blk-d">Rotação externa 2×15.</p></div>
+
+    <div class="blk"><div class="blk-h"><span class="blk-n">Só 2º saque, game até 7</span><span class="blk-m">8 min</span></div>
+      <p class="blk-d">Você só tem 2º saque. Cada dupla falta vale ponto para o adversário — o mesmo custo do jogo real. <b>Meta: no máximo 2 duplas no game até 7.</b> É o exercício que mais transfere, porque reproduz o custo sem o resto do jogo distraindo.</p></div>
+
+    <div class="blk"><div class="blk-h"><span class="blk-n">Saque em placar adverso</span><span class="blk-m">8 min</span></div>
+      <p class="blk-d">Saque 5 pontos em 30-40 e 5 em 15-40, dizendo o placar em voz alta antes de cada um. Se as suas duplas se concentram em pressão (causa 3), <b>este é o exercício principal do protocolo</b>, não um acessório.</p></div>
+
+    <div class="blk"><div class="blk-h"><span class="blk-n">Saque+1 com zona chamada</span><span class="blk-m">5 min</span></div>
+      <p class="blk-d">Chame a zona em voz alta, saque e jogue a bola seguinte. Reconecta o saque ao ponto — saque treinado isolado demais vira gesto de treino que não aparece no jogo.</p></div>
+
+    <div class="blk"><div class="blk-h"><span class="blk-n">Fechamento</span><span class="blk-m">2 min</span></div>
+      <p class="blk-d">Três 2º saques seguidos dentro. Termine acertando.</p></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Durante a partida</h2><span class="sec-note">triagem, não consertos</span></div>
+    <div class="insight">
+      <p class="insight-t">Regra das duas duplas</p>
+      <p>Deu duas duplas no mesmo game? <b>O próximo 2º saque vai a 70% de esforço, giro máximo, no corpo do adversário.</b> Sem pensar em técnica, sem tentar consertar o gesto no meio do jogo. Você troca velocidade por certeza e recupera a cabeça primeiro.</p>
+      <p>E a rotina entre pontos tem que ficar <b>mais lenta</b> quando aperta, não mais rápida. Respiração 4-4-4, ajeitar as cordas, dizer o plano do ponto. Dupla falta em pressão quase sempre vem acompanhada de saque apressado.</p>
+    </div>
+    <div class="insight" style="background:var(--court-2);border-left-color:var(--clay)">
+      <p class="insight-t" style="color:var(--clay)">Uma variável só</p>
+      <p>Enquanto durar o resgate, escolha <b>um</b> gesto para os jogos valendo e fique com ele por duas semanas inteiras — de preferência o antigo, o que você confia. O gesto novo continua no treino, como na fase de Aquisição.</p>
+      <p>Alternar de gesto entre pontos é o caminho mais rápido para não ter nenhum dos dois. O plano já previa esta reversão: se um torneio importante cair na transição, jogue com o saque antigo sem culpa.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Contador</h2><span class="sec-note">para usar na quadra</span></div>
+    <p class="muted">Marque as séries de 10 ou 20 enquanto treina. Some só nesta sessão — nada é salvo.</p>
+    <div class="tally">
+      <div class="tal">
+        <p class="tal-h">Dentro</p>
+        <p class="tal-n" id="n-in">0</p>
+        <div class="tal-b"><button class="mais" data-k="in" data-d="1">+1</button><button data-k="in" data-d="-1">−</button></div>
+      </div>
+      <div class="tal">
+        <p class="tal-h">Fora</p>
+        <p class="tal-n" id="n-out">0</p>
+        <div class="tal-b"><button class="mais" data-k="out" data-d="1">+1</button><button data-k="out" data-d="-1">−</button></div>
+      </div>
+      <div class="tal">
+        <p class="tal-h">Duplas faltas</p>
+        <p class="tal-n" id="n-df">0</p>
+        <div class="tal-b"><button class="mais" data-k="df" data-d="1">+1</button><button data-k="df" data-d="-1">−</button></div>
+      </div>
+    </div>
+    <div class="resultado">
+      <p class="big" id="pct">—</p>
+      <p class="msg" id="msg">Marque as bolas para ver o aproveitamento.</p>
+    </div>
+    <div class="btnrow"><button class="btn ghost" id="zerar">Zerar contadores</button></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2 class="sec-name">Critérios de alta</h2><span class="sec-note">quando parar o protocolo</span></div>
+    <table class="tbl">
+      <thead><tr><th>Medida</th><th>Alvo</th><th>Onde</th></tr></thead>
+      <tbody>
+        <tr><td class="op">Lançamento</td><td class="num">17/20 na zona</td><td class="num">Bloco A</td></tr>
+        <tr><td class="op">2º saque com giro, do fundo</td><td class="num">8/10 dentro</td><td class="num">Bloco A</td></tr>
+        <tr><td class="op">Duplas no game até 7 (só 2º)</td><td class="num">≤2</td><td class="num">Bloco B</td></tr>
+        <tr><td class="op">Duplas por set</td><td class="num">≤4</td><td class="num">Jogo valendo</td></tr>
+        <tr><td class="op">1º saque</td><td class="num">≥58%</td><td class="num">Jogo valendo</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top:14px">Bateu os dois últimos em duas partidas seguidas? O protocolo sai e você volta ao plano normal. Não bateu em três semanas, aí sim vale filmar 10 saques do lado aberto e olhar o gesto — antes disso é ansiedade, não diagnóstico.</p>
+  </section>
+
+  <footer>
+    Registre as duplas por set e o placar em que aconteceram na aba Partidas, no log de três linhas.<br>
+    Dor no ombro que dure mais de duas semanas é assunto de fisioterapeuta, não de ajuste de treino — corte o volume de saque pela metade e fale com o Marco ou o Márcio.
+  </footer>
+</div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+nav('saque.html');
+const C = {in:0, out:0, df:0};
+function pinta(){
+  document.getElementById('n-in').textContent  = C.in;
+  document.getElementById('n-out').textContent = C.out;
+  document.getElementById('n-df').textContent  = C.df;
+  const tot = C.in + C.out;
+  const el = document.getElementById('pct'), msg = document.getElementById('msg');
+  if(!tot){ el.textContent='—'; msg.textContent='Marque as bolas para ver o aproveitamento.'; return; }
+  const p = C.in/tot*100;
+  el.textContent = p.toFixed(0)+'%  ('+C.in+'/'+tot+')';
+  if(p>=80)      msg.textContent='Zona de avançar: suba uma estação da escada ou aumente o alvo de velocidade.';
+  else if(p>=70) msg.textContent='Faixa boa de treino. Mantenha a estação e acumule repetição.';
+  else if(p>=50) msg.textContent='Abaixo do critério. Volte uma estação da escada em vez de insistir.';
+  else           msg.textContent='Muito baixo para treinar assim: pare as bolas e volte ao lançamento isolado.';
+}
+document.querySelectorAll('.tal-b button').forEach(b=>b.addEventListener('click',()=>{
+  C[b.dataset.k] = Math.max(0, C[b.dataset.k] + (+b.dataset.d));
+  pinta();
+}));
+document.getElementById('zerar').addEventListener('click',()=>{
+  C.in=C.out=C.df=0; pinta();
+});
+pinta();
+</script>
+</body>
+</html>
