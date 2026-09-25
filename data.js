@@ -1,4 +1,4 @@
-// Gerado automaticamente de 'Periodização Carlo - Tênis - 2026.xlsx' em 2026-09-24
+// Gerado automaticamente de 'Periodização Carlo - Tênis - 2026.xlsx' em 2026-09-25
 // Não edite à mão: o GitHub Actions sobrescreve este arquivo.
 const HIST = [
 {
